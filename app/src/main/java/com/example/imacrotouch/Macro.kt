@@ -26,22 +26,24 @@ data class Macro(
     }
 
     companion object {
-        fun fromJson(obj: JSONObject): Macro? = try {
-            val pts = mutableListOf<GesturePoint>()
-            val arr = obj.getJSONArray("points")
-            for (i in 0 until arr.length()) {
-                GesturePoint.fromJson(arr.getJSONObject(i))?.let { pts.add(it) }
+        fun fromJson(obj: JSONObject): Macro? {
+            return try {
+                val pts = mutableListOf<GesturePoint>()
+                val arr = obj.getJSONArray("points")
+                for (i in 0 until arr.length()) {
+                    GesturePoint.fromJson(arr.getJSONObject(i))?.let { pts.add(it) }
+                }
+                if (pts.isEmpty()) return null
+                Macro(
+                    id = obj.optString("id", UUID.randomUUID().toString()),
+                    name = obj.optString("name", "Untitled"),
+                    points = pts,
+                    createdAt = obj.optLong("createdAt", System.currentTimeMillis()),
+                    lastPlayedAt = obj.optLong("lastPlayedAt", 0L)
+                )
+            } catch (_: Exception) {
+                null
             }
-            if (pts.isEmpty()) return null
-            Macro(
-                id = obj.optString("id", UUID.randomUUID().toString()),
-                name = obj.optString("name", "Untitled"),
-                points = pts,
-                createdAt = obj.optLong("createdAt", System.currentTimeMillis()),
-                lastPlayedAt = obj.optLong("lastPlayedAt", 0L)
-            )
-        } catch (_: Exception) {
-            null
         }
     }
 }
