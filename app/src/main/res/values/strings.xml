@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">iMacro Touch</string>
+    <string name="accessibility_description">Plays back gestures that you create inside the iMacro Touch app. This service only dispatches gestures you explicitly author and save; it does not record touches from other applications.</string>
+    <string name="permission_a11y_title">Accessibility permission required</string>
+    <string name="permission_a11y_message">To play macros on the screen, iMacro Touch needs the Accessibility service. You will be taken to Android Settings where you can enable “iMacro Touch”. The app never enables this automatically.</string>
+    <string name="permission_overlay_title">Display over other apps</string>
+    <string name="permission_overlay_message">The floating control bubble needs permission to appear over other apps. You will be taken to the system settings screen to grant it. You can revoke it at any time.</string>
+</resources>
