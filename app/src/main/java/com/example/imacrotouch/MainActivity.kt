@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
         )
         findViewById<RecyclerView>(R.id.macroList).apply {
             layoutManager = LinearLayoutManager(this@MainActivity)
-            adapter = rachel.c@example.org
+            adapter = this@MainActivity.adapter
         }
     }
 
